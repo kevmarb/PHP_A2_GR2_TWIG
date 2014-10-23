@@ -1,0 +1,16 @@
+{
+    "name": "Kevin/php_a2_gr2_twig",
+    "description": "rendu A2 GR2 Sem2",
+    "require": {
+        "twig/twig": "~1.16",
+        "imagine/imagine": "~0.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Marburger",
+            "email": "kevin.marburger26@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
