@@ -36,8 +36,8 @@
     $tags = getTags($link);
     foreach ($tags as $tag) {
         echo '<label for="tag'.$tag['id'].'" class="checkbox-inline">';
-            echo '<input type="checkbox" id="tag'.$tag['id'].'" name="tags[]" value="'.$tag['id'].'"> '.$tag['name'];
-        echo '</label>';
+    echo '<input type="checkbox" id="tag'.$tag['id'].'" name="tags[]" value="'.$tag['id'].'"> '.$tag['name'];
+    echo '</label>';
     }
     ?>
     <br>
