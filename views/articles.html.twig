@@ -1,2 +1,52 @@
 {% extends 'base.html.twig' %}
+{%  block content %}
+<?php
+ $i=0;
+?>
+{% for aritcle in articles %}
+    {%  if 0 == i is divisibleby (3)  %}
+    <div class= "row">
+        {% endif%}
+
+
+{% endfor %}
+
+
+
+        <article class="col-xs-12 col-sm-6 col-md-4 col-lg-4">'
+            <header>
+                <h1><a href="/article.php?id={{article.id}}"></a>{{article.id}}</h1>'
+                <img title="{{article.title}}" alt="{{article.title}}" src="{{article.id}}">
+                <small>Written by {{article.user_id}} on {{article.created_at}}</small>
+                </header>
+            <div class="content">
+                <p>{{article.content}}</p>
+            </div>
+            <footer>
+                <p>Posted in category: <a href="/article?id='{{article.category_id}}">{{article.category_id}}</a></p>
+                <p><a href="/tag?id='{{article.category_id}}"><span class="label label-primary">Primary</span></a></p>
+                </footer>
+            </article>
+
+
+        {% if (2 == i%3)%}
+        </div>;
+        {% endif%}
+
+    <ul class="pagination">
+        <li <?php echo 1 == $currentPage ? 'class="disabled"' : null; ?>
+        ><a href="index.php?p=<?php echo $currentPage-1; ?>">&leftarrow;</a></li>
+
+        <?php $i = 1; ?>
+        <?php while ($i <= $nbPages) { ?>
+        <li <?php echo $i == $currentPage ? 'class="active"' : null; ?>><a href="index.php?p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+        <?php $i++; ?>
+        <?php } ?>
+
+        <li <?php echo $nbPages == $currentPage ? 'class="disabled"' : null; ?>><a href="index.php?p=<?php echo $currentPage+1; ?>">&rightarrow;</a></li>
+    </ul>
+
+{% endblock %}
+
+
 
