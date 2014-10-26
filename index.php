@@ -18,12 +18,18 @@ if ($currentPage > $nbPages) {
     header('Location: index.php?p='.$nbPages);
 }
 
+
 $articles = getArticles($link, null, ($currentPage-1)*$perPage, $perPage);
+$article = getArticle($link, 8);
+
 
 echo $twig->render('articles.html.twig',[
-    'article' => $articles,
-    'connected' => true ,
-    'username' => 'Blob',
+    'currentPage'=> $currentPage,
+    'nbPage' => $nbPages,
+    'articles' => $articles,
+    'connected' => true,
+    'username' => 'BLOB',
+
 ]);
 
 

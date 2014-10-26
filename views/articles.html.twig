@@ -1,23 +1,16 @@
 {% extends 'base.html.twig' %}
 {%  block content %}
-<?php
- $i=0;
-?>
-{% for aritcle in articles %}
+{% set i = 0 %}
+{% for article in articles %}
+    {% if article.enabled %}
     {%  if 0 == i is divisibleby (3)  %}
     <div class= "row">
         {% endif%}
-
-
-{% endfor %}
-
-
-
         <article class="col-xs-12 col-sm-6 col-md-4 col-lg-4">'
             <header>
-                <h1><a href="/article.php?id={{article.id}}"></a>{{article.id}}</h1>'
+                <h1><a href="/article.php?id="></a> {{article.id}} </h1>
                 <img title="{{article.title}}" alt="{{article.title}}" src="{{article.id}}">
-                <small>Written by {{article.user_id}} on {{article.created_at}}</small>
+                <small>Written by {{article.user_id}} on {{article.created_at}} </small>
                 </header>
             <div class="content">
                 <p>{{article.content}}</p>
@@ -28,25 +21,26 @@
                 </footer>
             </article>
 
-
-        {% if (2 == i%3)%}
+        {% if 2 == i%3%}
         </div>;
         {% endif%}
+{% set i= i+1 %}
+{% endif %}
+{% endfor %}
 
-    <ul class="pagination">
-        <li <?php echo 1 == $currentPage ? 'class="disabled"' : null; ?>
-        ><a href="index.php?p=<?php echo $currentPage-1; ?>">&leftarrow;</a></li>
+    <ul class="pagination col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <li {% if 1 == currentPage or null == currentPage %}class="disabled"{% endif %}><a href="index.php?p={{ currentPage-1 }}">&leftarrow;</a></li>
 
-        <?php $i = 1; ?>
-        <?php while ($i <= $nbPages) { ?>
-        <li <?php echo $i == $currentPage ? 'class="active"' : null; ?>><a href="index.php?p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-        <?php $i++; ?>
-        <?php } ?>
+        {% for i in 1..nbPage %}
+            <li {% if i == currentPage %}class="active"{% endif %}><a href="index.php?p={{ i }}">{{ i }}</a></li>
+        {% endfor %}
 
-        <li <?php echo $nbPages == $currentPage ? 'class="disabled"' : null; ?>><a href="index.php?p=<?php echo $currentPage+1; ?>">&rightarrow;</a></li>
+        <li {% if nbPage == currentPage or null == currentPage %}class="disabled"{% endif %}><a href="index.php?p={{ currentPage + 1 }}">&rightarrow;</a></li>
     </ul>
 
-{% endblock %}
+    {% endblock %}
+
+
 
 
 
