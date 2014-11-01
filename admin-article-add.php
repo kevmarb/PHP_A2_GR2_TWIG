@@ -31,6 +31,6 @@ if (!empty($_POST) && isset($_POST['submitArticle'])) {
     }
 }
 
-include __DIR__.'/template/admin-article-add.php';
+include __DIR__.'/views/admin-article-add.html.twig';
 
 require __DIR__.'/_footer.php';

@@ -27,6 +27,6 @@ if (isset($_POST['loginSubmit'])) {
     }
 }
 
-include __DIR__.'/template/login.php';
+include __DIR__.'/views/login.html.twig';
 
 require __DIR__.'/_footer.php';
