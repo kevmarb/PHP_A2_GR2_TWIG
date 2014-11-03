@@ -8,6 +8,6 @@ require __DIR__.'/_header-admin.php';
 
 $articles = getArticles($link);
 
-include __DIR__.'/template/admin-article-list.php';
+include __DIR__.'/views/admin-article-list.html.twig';
 
 require __DIR__.'/_footer.php';

@@ -10,4 +10,4 @@ $articles = getArticles($link);
 
 require __DIR__.'/_footer.php';
 
-include __DIR__.'/template/articles.php';
+include __DIR__.'/views/articles.html.twig';
