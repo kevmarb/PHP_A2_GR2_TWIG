@@ -3,6 +3,7 @@
  * @author Thibaud BARDIN (https://github.com/Irvyne).
  * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
  */
+
 require __DIR__.'/_header.php';
 
 $perPage = 6; // nbArticleParPage
@@ -18,19 +19,14 @@ if ($currentPage > $nbPages) {
     header('Location: index.php?p='.$nbPages);
 }
 
-
 $articles = getArticles($link, null, ($currentPage-1)*$perPage, $perPage);
-$article = getArticle($link, 8);
 
-
-echo $twig->render('articles.html.twig',[
-    'currentPage'=> $currentPage,
-    'nbPage' => $nbPages,
+echo $twig->render('articles.html.twig', [
     'articles' => $articles,
-    'connected' => true,
-    'username' => 'BLOB',
-
+    'currentPage' => $currentPage,
+    'nbPage' => $nbPages,
+    'connected' => isConnected(),
+    'username' => 'BLOb',
 ]);
-
 
 require __DIR__.'/_footer.php';

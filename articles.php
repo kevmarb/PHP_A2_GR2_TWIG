@@ -9,5 +9,11 @@ require __DIR__.'/_header.php';
 $articles = getArticles($link);
 
 require __DIR__.'/_footer.php';
+var_dump(getSession());
+echo $twig->render('articles.html.twig', [
+    'articles' => $articles,
+    'currentPage' => $currentPage,
+    'nbPage' => $nbPages,
+    'connected' => isConnected(),
 
-include __DIR__.'/views/articles.html.twig';
+]);

@@ -1,32 +1,35 @@
-
 <?php
 /**
- * @author Thibaud BARDIN (https://github.com/Irvyne).
- * This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
- */
+* @author Thibaud BARDIN (https://github.com/Irvyne).
+* This code is under MIT licence (see https://github.com/Irvyne/license/blob/master/MIT.md)
+*/
 
 require __DIR__.'/_header.php';
 
 if (isConnected()) {
-    header('Location: index.php');
+header('Location: index.php');
 }
-
+$missing_credential = false;
+$credential_error = false;
 if (isset($_POST['loginSubmit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+$username = $_POST['username'];
+$password = $_POST['password'];
 
-    if (empty($username) || empty($password)) {
-        $missing_credential = true;
-    } else {
-        $connection = connection($link, $username, $password);
-        if ($connection) {
-            header('Location: index.php');
-        } else {
-            $credential_error = true;
-        }
-    }
+if (empty($username) || empty($password)) {
+$missing_credential = true;
+} else {
+$connection = connection($link, $username, $password);
+if ($connection) {
+header('Location: index.php');
+} else {
+$credential_error = true;
+}
+}
 }
 
-include __DIR__.'/views/login.html.twig';
+echo $twig->render('login.html.twig', [
+'missing_credential' => $missing_credential,
+'credential_error' => $credential_error,
+]);
 
 require __DIR__.'/_footer.php';
